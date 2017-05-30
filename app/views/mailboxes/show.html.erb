@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @mailbox.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @mailbox.email %>
+</p>
+
+<p>
+  <strong>Last message:</strong>
+  <%= link_to @mailbox.last_message.summary, @mailbox.last_message unless @mailbox.last_message.nil?%>
+</p>
+
+<%= link_to 'Edit', edit_mailbox_path(@mailbox) %> |
+<%= link_to 'Destroy', @mailbox, method: :delete, data: { confirm: 'Are you sure?' } %></td> |
+<%= link_to 'Back', mailboxes_path %>

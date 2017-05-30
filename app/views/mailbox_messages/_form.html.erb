@@ -1,0 +1,27 @@
+<%= form_with(model: mailbox_message, local: true) do |form| %>
+  <% if mailbox_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mailbox_message.errors.count, "error") %> prohibited this mailbox_message from being saved:</h2>
+
+      <ul>
+      <% mailbox_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :mailbox_id_id %>
+    <%= form.text_field :mailbox_id_id, id: :mailbox_message_mailbox_id_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message_id_id %>
+    <%= form.text_field :message_id_id, id: :mailbox_message_message_id_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

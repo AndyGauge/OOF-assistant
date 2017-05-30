@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mailboxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mailboxes.each do |mailbox| %>
+      <tr>
+        <td><%= mailbox.name %></td>
+        <td><%= mailbox.email %></td>
+        <td><%= content_tag 'a',
+                            'Set Out of Office',
+                            class: "display_out_of_office_modal",
+                            data: {
+                              mailbox: mailbox.id,
+                              lastmessage: mailbox.last_message_id
+                            } %></td>
+        <td><%= link_to 'More...', mailbox %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= content_tag 'a', 'New Mailbox', id: 'display_new_mailbox_modal' %>
+
+<div id="new_mailbox_modal" style="display:none">
+<%= render 'form', mailbox: @mailbox %>
+</div>
+
+<div id="set_oof_modal" style="display:none">
+  Select a message to set out of Office
+  <%= form_with(model: @mailbox_message, local: true) do |form| %>
+    <%= form.hidden_field(:mailbox_id, id: 'mailbox_message_mailbox') %>
+    <%= form.submit 'Set out of office' %>
+    <%= form.select(
+      :message_id,
+      options_for_select(
+        Message.all.map {|m| [m.summary, m.id, {'data-body' => m.body}]} << ["Create new Reply", "new",
+        {'data-body' => "<label>Summary</label><input name=\"mailbox_message[message_attributes[summary]]\"><label>Body</label><textarea name=\"mailbox_message[message_attributes[body]]\">"}]
+      ),
+      {},
+      id: "mailbox_message_message"
+      ) %>
+    <div id='message_body'><%=Message.first.body%></div>
+    <% end %>
+</div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oof</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <ul class="navigation">
+        <li><%= link_to "Mailboxes", mailboxes_path %></li>
+        <li><%= link_to "Messages", messages_path %></li>
+      </ul>
+    </nav>
+    <div class="nav-breathe">
+      <%= yield %>
+    </div>
+  </body>
+</html>

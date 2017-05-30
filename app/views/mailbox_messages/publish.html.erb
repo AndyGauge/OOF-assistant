@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<% if @successful %>
+<div>Successfully set an out of office message for <%=@mailbox_message.mailbox.name %>.</div>
+
+<% else %>
+<div>Cannot set out of office message for <%=@mailbox_message.mailbox.name %>.</div>
+<% end %>

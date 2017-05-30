@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mailbox:</strong>
+  <%= @mailbox_message.mailbox_id %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @mailbox_message.message_id %>
+</p>
+
+<%= link_to 'Edit', edit_mailbox_message_path(@mailbox_message) %> |
+<%= link_to 'Back', mailbox_messages_path %>
