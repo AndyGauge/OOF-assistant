@@ -1,7 +1,0 @@
-# Set the following values to the Exchange server's Exchange web services
-# URL, the user name of the account with full permissions to the users
-# mailboxes, and that users password
-
-server:
-user:
-pass:

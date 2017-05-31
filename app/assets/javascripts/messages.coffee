@@ -5,7 +5,8 @@ $(document).on('turbolinks:load', ->
   $("#display_new_message_modal").click ->
     $("#new_message_modal").modal({
       opacity: 50,
-      closeHTML: 'X',
+      overlayCss: {backgroundColor:"#888"},
+      containerCss: { backgroundColor:"#FFF", padding: "10px", borderRadius: "10px", maxWidth: "400px", border: "1px solid #888"},
       overlayClose:true})
 
 
