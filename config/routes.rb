@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'mailboxes#index'
   resources :mailbox_messages do
     member do
       get :publish  #TODO: get to post

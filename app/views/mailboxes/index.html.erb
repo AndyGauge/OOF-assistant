@@ -42,16 +42,17 @@
   Select a message to set out of Office
   <%= form_with(model: @mailbox_message, local: true) do |form| %>
     <%= form.hidden_field(:mailbox_id, id: 'mailbox_message_mailbox') %>
-    <%= form.submit 'Set out of office' %>
     <%= form.select(
       :message_id,
       options_for_select(
         Message.all.map {|m| [m.summary, m.id, {'data-body' => m.body}]} << ["Create new Reply", "new",
-        {'data-body' => "<label>Summary</label><input name=\"mailbox_message[message_attributes[summary]]\"><label>Body</label><textarea name=\"mailbox_message[message_attributes[body]]\">"}]
+          {'data-body' => %{<div class="field"><label for="message_summary">Summary</label><input id="message_summary" name=\"mailbox_message[message_attributes[summary]]\"></div>
+                            <div class="field"><label for="message_body">Body</label><textarea id="message_body" cols="50" rows="5" name=\"mailbox_message[message_attributes[body]]\"></textarea></div>}}]
       ),
       {},
       id: "mailbox_message_message"
       ) %>
-    <div id='message_body'><%=Message.first.body%></div>
+      <%= form.submit 'Set out of office' %>
+    <div id='message_body'><%=Message.first_or_create.body%></div>
     <% end %>
 </div>

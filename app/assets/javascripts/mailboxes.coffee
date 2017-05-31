@@ -19,7 +19,8 @@ $(document).on('turbolinks:load', ->
       $("#mailbox_message_message").trigger("change")
     $("#set_oof_modal").modal({
       opacity: 50,
-      closeHTML: 'X',
+      overlayCss: {backgroundColor:"#888"},
+      containerCss: { backgroundColor:"#FFF", padding: "10px", borderRadius: "10px", maxWidth: "400px", border: "1px solid #222", minHeight: "240px" },
       overlayClose:true})
 
   )
