@@ -56,6 +56,7 @@ class MailboxesController < ApplicationController
   # DELETE /mailboxes/1
   # DELETE /mailboxes/1.json
   def destroy
+    MailboxMessage.where(mailbox: @mailbox).destroy_all
     @mailbox.destroy
     respond_to do |format|
       format.html { redirect_to mailboxes_url, notice: 'Mailbox was successfully destroyed.' }
