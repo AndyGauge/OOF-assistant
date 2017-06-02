@@ -7,7 +7,7 @@
     <tr>
       <th>Summary</th>
       <th>Body</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -16,9 +16,7 @@
       <tr>
         <td><%= message.summary %></td>
         <td><%= message.body %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'More...', message, class: 'btn' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,7 +24,7 @@
 
 <br>
 
-<%= content_tag 'a', 'New Message', id: 'display_new_message_modal' %>
+<%= content_tag 'a', 'New Message', class: 'btn', id: 'display_new_message_modal' %>
 
 <div id="new_message_modal" style="display:none">
 <%= render 'form', message: @message %>

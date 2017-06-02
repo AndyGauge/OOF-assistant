@@ -15,6 +15,6 @@
   <%= link_to @mailbox.last_message.summary, @mailbox.last_message unless @mailbox.last_message.nil?%>
 </p>
 
-<%= link_to 'Edit', edit_mailbox_path(@mailbox) %> |
-<%= link_to 'Destroy', @mailbox, method: :delete, data: { confirm: 'Are you sure?' } %></td> |
-<%= link_to 'Back', mailboxes_path %>
+<%= link_to 'Edit', edit_mailbox_path(@mailbox), class: 'btn' %>
+<%= link_to 'Destroy', @mailbox, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %></td>
+<%= link_to 'Back', mailboxes_path, class: 'btn' %>

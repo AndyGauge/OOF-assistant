@@ -13,15 +13,16 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :mailbox_name %>
+    <%= form.text_field :name, id: :mailbox_name, class: 'rounded' %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :mailbox_email %>
+    <%= form.text_field :email, id: :mailbox_email, class: 'rounded' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn' %>
+    <%= content_tag 'a', 'Cancel', class:"btn simplemodal-close" %>
   </div>
 <% end %>

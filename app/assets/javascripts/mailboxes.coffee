@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', ->
     $("#new_mailbox_modal").modal({
       opacity: 50,
       overlayCss: {backgroundColor:"#888"},
-      containerCss: { backgroundColor:"#FFF", padding: "10px", borderRadius: "10px", maxWidth: "180px", border: "1px solid #888", height: "140px" },
+      containerCss: { backgroundColor:"#FFF", padding: "10px", borderRadius: "10px", maxWidth: "200px", border: "1px solid #888", height: "140px" },
       overlayClose:true})
 
   $('#mailbox_message_message').on 'change', ->
@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', ->
     $("#set_oof_modal").modal({
       opacity: 50,
       overlayCss: {backgroundColor:"#888"},
-      containerCss: { backgroundColor:"#FFF", padding: "10px", borderRadius: "10px", maxWidth: "400px", border: "1px solid #888", minHeight: "240px" },
+      containerCss: { backgroundColor:"#FFF", padding: "10px", borderRadius: "10px", maxWidth: "400px", border: "1px solid #888", minHeight: "300px" },
       overlayClose:true})
 
   )

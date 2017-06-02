@@ -18,12 +18,12 @@
         <td><%= mailbox.email %></td>
         <td><%= content_tag 'a',
                             'Set Out of Office',
-                            class: "display_out_of_office_modal",
+                            class: "display_out_of_office_modal btn",
                             data: {
                               mailbox: mailbox.id,
                               lastmessage: mailbox.last_message_id
                             } %></td>
-        <td><%= link_to 'More...', mailbox %></td>
+        <td><%= link_to 'More...', mailbox, class: 'btn'%></td>
 
       </tr>
     <% end %>
@@ -32,27 +32,32 @@
 
 <br>
 
-<%= content_tag 'a', 'New Mailbox', id: 'display_new_mailbox_modal' %>
+<%= content_tag 'a', 'New Mailbox', class: 'btn', id: 'display_new_mailbox_modal' %>
 
 <div id="new_mailbox_modal" style="display:none">
 <%= render 'form', mailbox: @mailbox %>
 </div>
 
 <div id="set_oof_modal" style="display:none">
-  Select a message to set out of Office
-  <%= form_with(model: @mailbox_message, local: true) do |form| %>
+  <h3>Set out of office message</h3>
+  <%= form_with(model: @mailbox_message, local: true, class: 'form_spaned') do |form| %>
     <%= form.hidden_field(:mailbox_id, id: 'mailbox_message_mailbox') %>
     <%= form.select(
       :message_id,
       options_for_select(
         Message.all.map {|m| [m.summary, m.id, {'data-body' => m.body}]} << ["Create new Reply", "new",
-          {'data-body' => %{<div class="field"><label for="message_summary">Summary</label><input id="message_summary" name=\"mailbox_message[message_attributes[summary]]\"></div>
-                            <div class="field"><label for="message_body">Body</label><textarea id="message_body" cols="50" rows="5" name=\"mailbox_message[message_attributes[body]]\"></textarea></div>}}]
+          {'data-body' => %{<div class="field"><label for="message_summary">Summary</label><input id="message_summary" name=\"mailbox_message[message_attributes[summary]]\" class=\"rounded\"></div>
+                            <div class="field"><label for="message_body">Body</label><textarea id="message_body" cols="47" rows="5" name=\"mailbox_message[message_attributes[body]]\" class=\"rounded\"></textarea></div>}}]
       ),
       {},
-      id: "mailbox_message_message"
+      id: "mailbox_message_message",
+      class: 'rounded'
       ) %>
-      <%= form.submit 'Set out of office' %>
-    <div id='message_body'><%=Message.first_or_create.body%></div>
+      <div id='message_body'><%=Message.first_or_create.body%></div>
+      <div id='bottom_buttons'>
+        <%= form.submit 'Set out of office', class: 'btn' %>
+        <%= content_tag 'a', 'Cancel', class:"btn simplemodal-close" %>
+      </div>
+
     <% end %>
 </div>
