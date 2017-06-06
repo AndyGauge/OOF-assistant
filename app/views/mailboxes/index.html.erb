@@ -17,7 +17,7 @@
         <td><%= mailbox.name %></td>
         <td><%= mailbox.email %></td>
         <td><% if mailbox.last_mailbox_message && mailbox.last_mailbox_message[:created_at].today? %>
-          <span class = "oof">OOF</span><% end %></td>
+          <span class = "oof">Out</span><% end %></td>
         <td><%= content_tag 'a',
                             'Set Out of Office',
                             class: "display_out_of_office_modal btn",
