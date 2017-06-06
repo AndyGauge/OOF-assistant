@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## development
 
-Things you may want to cover:
+Requires ruby 2.4.0 and git cli tools.
 
-* Ruby version
+```
+git clone https://andygauge.github.com/oof-impersonation
+gem install bundler
+bundle
+rake db:migrate
+rails s
+```
 
-* System dependencies
+## production
 
-* Configuration
+Production uses upstart to maintain server.  Server automatically starts on boot
+If server is not running:
 
-* Database creation
+```
+sudo start oof-impersonation
+```
 
-* Database initialization
+Upstart executes as root, so ruby is installed directly, using package manager.
+Administrator account owns files within /home/administrator/oof-impersonation.
+Production codebase exists in production branch (exists only locally).
+Changes to the codebase can be applied by using
 
-* How to run the test suite
+```
+cd ~\oof-impersonation
+git pull origin master
+sudo rails assets:precompile
+sudo restart oof-impersonation
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## CSV import
 
-* Deployment instructions
+Create a list of mailboxes using Exchange Shell.
 
-* ...
+```
+Get-Mailbox -ResultSize Unlimited | Select Name, PrimarySMTPAddress | Export-CSV -Path "c:\mailboxes.csv"
+```
+
+Import the list of mailboxes
+
+```
+rake csv:import[mailboxes.csv]
+```
